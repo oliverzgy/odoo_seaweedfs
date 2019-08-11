@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-    <menuitem name="存储" id="base_file_root_menu"
+    <menuitem name="SeaweedFS" id="file_storage_root_menu"
             groups=""
-            web_icon="base_file,static/description/icon.png"
+            web_icon="odoo_seaweedfs,static/description/icon.png"
             sequence="40"/>
-    <menuitem id="menu_base_file_configuration" name="配置" parent="base_file_root_menu" sequence="90" groups="base.group_system"/>
+    <menuitem id="menu_file_storage_configuration" name="Configuration" parent="file_storage_root_menu" sequence="90" groups="base.group_system"/>
 
     <record id="res_config_settings_view_form" model="ir.ui.view">
-      <field name="name">res.config.settings.view.form.inherit.autosoft.search</field>
+      <field name="name">res.config.settings.view.form</field>
       <field name="model">res.config.settings</field>
       <field name="priority" eval="80"/>
       <field name="inherit_id" ref="base.res_config_settings_view_form"/>
       <field name="arch" type="xml">
         <xpath expr="//div[hasclass('settings')]" position="inside">
-          <div class="app_settings_block" data-string="base_file" string="存储" data-key="base_file" groups="">
-            <h2>文件存储</h2>
+          <div class="app_settings_block" data-string="odoo_seaweedfs" string="File Storage" data-key="odoo_seaweedfs" groups="">
+            <h2>File Server</h2>
             <div class="row mt16 o_settings_container">
               <div class="col-xs-12 col-md-6 o_setting_box">
                 <div class="o_setting_right_pane">
                   <div class="content-group">
                     <div class="row mt16">
-                      <label string="启用文件存储" for="file_server_active" class="col-md-3 o_light_label"/>
+                      <label for="file_server_active" class="col-md-3 o_light_label"/>
                       <field name="file_server_active"/>
                     </div>
                     <div class="row mt16">
-                      <label string="文件存储方式" for="file_storage_option" class="col-md-3 o_light_label"/>
+                      <label for="file_storage_option" class="col-md-3 o_light_label"/>
                       <field name="file_storage_option"/>
                     </div>
                     <div class="row mt16">
-                      <label string="MASTER文件服务器" for="weed_master_url" class="col-md-3 o_light_label"/>
-                      <field name="weed_master_url"/>
+                      <label for="fs_master_url" class="col-md-3 o_light_label"/>
+                      <field name="fs_master_url"/>
                     </div>
                     <div class="row mt16">
-                      <label string="VOLUME文件服务器" for="weed_volume_url" class="col-md-3 o_light_label"/>
-                      <field name="weed_volume_url"/>
+                      <label for="fs_volume_url" class="col-md-3 o_light_label"/>
+                      <field name="fs_volume_url"/>
                     </div>
                     <div class="row mt16">
-                      <label string="PUBLIC文件服务器" for="public_weed_url" class="col-md-3 o_light_label"/>
-                      <field name="public_weed_url"/>
+                      <label for="public_fs_url" class="col-md-3 o_light_label"/>
+                      <field name="public_fs_url"/>
                     </div>
                   </div>
                 </div>
@@ -50,21 +50,21 @@
       </field>
     </record>
 
-    <record id="base_file_config_settings_action" model="ir.actions.act_window">
+    <record id="file_storage_config_settings_action" model="ir.actions.act_window">
       <field name="name">Settings</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">res.config.settings</field>
       <field name="view_mode">form</field>
       <field name="view_id" ref="res_config_settings_view_form"/>
       <field name="target">inline</field>
-      <field name="context">{'module' : 'base_file'}</field>
+      <field name="context">{'module' : 'odoo_seaweedfs'}</field>
     </record>
 
-    <menuitem id="base_file_menu_setting"
-        name="设置"
-        parent="menu_base_file_configuration"
+    <menuitem id="file_storage_menu_setting"
+        name="Settings"
+        parent="menu_file_storage_configuration"
         sequence="0"
-        action="base_file_config_settings_action"
+        action="file_storage_config_settings_action"
         groups="base.group_system"/>
   </data>
 </odoo>
